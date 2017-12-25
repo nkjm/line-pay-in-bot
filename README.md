@@ -43,7 +43,7 @@ Please be noted that you need to register your global ip address as white list o
 
 # Reference
 
-For more methods of LINE API SDK, refer to [API reference](https://nkjm.github.io/line-pay/LinePay.html).
+For more methods of LINE Pay API SDK, refer to [API reference](https://nkjm.github.io/line-pay/LinePay.html).
 
 # License
 
