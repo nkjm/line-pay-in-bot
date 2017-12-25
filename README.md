@@ -1,6 +1,6 @@
 # Overview
 
-This is a sample code to use LINE Pay in your bot.
+A sample code to use LINE Pay in your bot.
 
 # Getting started
 
@@ -23,15 +23,21 @@ $ git clone https://github.com/nkjm/line-pay-in-bot.git
 
 Create .env file and write following replacing YOUR_VALUE to your value of each parameters.
 
-```javascript
+```
+$ cd line-pay-in-bot/
+```
+
+```.env
 LINE_BOT_CHANNEL_SECRET=YOUR_VALUE
 LINE_BOT_ACCESS_TOKEN=YOUR_VALUE
 LINE_PAY_CHANNEL_ID=YOUR_VALUE
 LINE_PAY_CHANNEL_SECRET=YOUR_VALUE
 ```
 
-You can use services like ngrok or [serveo](https://serveo.net) to launch your server.
+You can use free services like [ngrok](https://ngrok.com) or [serveo](https://serveo.net) to launch your server.
 Please be noted that you need to register your global ip address as white list of LINE Pay sandbox. Also need to register https://YOUR_HOSTNAME/webhook as webook URL in LINE Messaging API channel configuration.
+
+\*Please keep in mind that these hostname and ip address may change every time you restart the server.
 
 # Reference
 
