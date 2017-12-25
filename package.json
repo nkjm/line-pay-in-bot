@@ -1,5 +1,5 @@
 {
-  "name": "LINE Pay in the bot",
+  "name": "line-pay-in-bot",
   "version": "1.0.0",
   "description": "Sample code to use LINE Pay inside Bot.",
   "main": "index.js",

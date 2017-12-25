@@ -2,6 +2,10 @@
 
 A sample code to use LINE Pay in your bot.
 
+# Demo
+
+![line-pay-in-bot-demo](https://www.dropbox.com/s/czpevjfkbl4phaf/line-pay-in-bot-demo.gif?raw=1)
+
 # Getting started
 
 ### Create sandbox of LINE Pay
@@ -17,15 +21,13 @@ Go to [LINE developers console](https://developers.line.me) and create your chan
 
 ```
 $ git clone https://github.com/nkjm/line-pay-in-bot.git
+$ cd line-pay-in-bot/
+$ npm install
 ```
 
 ### Configuration
 
 Create .env file and write following replacing YOUR_VALUE to your value of each parameters.
-
-```
-$ cd line-pay-in-bot/
-```
 
 ```.env
 LINE_BOT_CHANNEL_SECRET=YOUR_VALUE
