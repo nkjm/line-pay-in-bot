@@ -4,7 +4,7 @@
   "description": "Sample code to use LINE Pay inside Bot.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node without_middleware.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,7 +18,9 @@
     "debug": "^3.1.0",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
-    "line-pay": "^1.0.3",
-    "memory-cache": "^0.2.0"
+    "express-session": "^1.15.6",
+    "line-pay": "^1.0.6",
+    "memory-cache": "^0.2.0",
+    "uuid": "^3.1.0"
   }
 }

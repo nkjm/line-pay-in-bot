@@ -134,14 +134,14 @@ server.get("/pay/confirm", (req, res, next) => {
         return res.status(400).send("Reservation not found.")
     }
 
-    res.sendStatus(200);
-
     let confirmation = {
         transactionId: req.query.transactionId,
         amount: reservation.amount,
         currency: reservation.currency
     }
     return pay.confirm(confirmation).then((response) => {
+        res.sendStatus(200);
+
         let message = {
             type: "text",
             text: "Now this Chatbot is fully functional."
