@@ -49,10 +49,10 @@ server.post("/webhook", lineBot.middleware(botConfig), (req, res, next) => {
 
             let message = {
                 type: "template",
-                altText: "You need to purchase subscription to use this Chatbot. It's 1yen/month. Do you want to puchase?",
+                altText: "You need to purchase subscription to use this chatbot. It's 1yen/month. Do you want to puchase?",
                 template: {
                     type: "buttons",
-                    text: "You need to purchase subscription to use this Chatbot. It's 1yen/month. Do you want to purchase?",
+                    text: "You need to purchase subscription to use this chatbot. It's 1yen/month. Do you want to purchase?",
                     actions: [
                         {type: "uri", label: "Purchase Now", uri: `https://${req.hostname}/pay?userId=${encodeURIComponent(event.source.userId)}`}
                     ]
@@ -85,16 +85,18 @@ server.use("/pay", (req, res, next) => {
     confirmUrl: process.env.LINE_PAY_CONFIRM_URL,
     orderId: uuid()
 }), (req, res, next) => {
-    let message = {
-        type: "text",
-        text: "Now this Chatbot is fully functional."
-    }
-    debug(req.session);
-
     // Update user's subscriptoin to active.
     cache.put(req.session.userId, {subscription: "active"});
 
-    bot.pushMessage(req.session.userId, message).then((response => {
+    let messages = [{
+        type: "sticker",
+        packageId: 2,
+        stickerId: 144
+    },{
+        type: "text",
+        text: "Congratulations! Now your chatbot is fully functional."
+    }]
+    bot.pushMessage(req.session.userId, messages).then((response => {
         res.redirect("https://line.me/R/nv/dummy");
     })).catch((exception) => {
         res.status(500).send("Failed to execute payment.");

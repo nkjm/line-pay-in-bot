@@ -142,11 +142,15 @@ server.get("/pay/confirm", (req, res, next) => {
     return pay.confirm(confirmation).then((response) => {
         res.sendStatus(200);
 
-        let message = {
+        let messages = [{
+            type: "sticker",
+            packageId: 2,
+            stickerId: 144
+        },{
             type: "text",
-            text: "Now this Chatbot is fully functional."
-        }
-        return bot.pushMessage(reservation.userId, message);
+            text: "Congratulations! Now your chatbot is fully functional."
+        }]
+        return bot.pushMessage(reservation.userId, messages);
     }).then((response) => {
         cache.put(reservation.userId, {subscription: "active"});
     });
