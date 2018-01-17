@@ -11,7 +11,8 @@ const linePay = require("line-pay");
 const pay = new linePay({
     channelId: process.env.LINE_PAY_CHANNEL_ID,
     channelSecret: process.env.LINE_PAY_CHANNEL_SECRET,
-    isSandbox: true
+    hostname: process.env.LINE_PAY_HOSTNAME,
+    isSandbox: false
 });
 
 // Importing LINE Messaging API SDK
