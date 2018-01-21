@@ -11,8 +11,7 @@ const linePay = require("line-pay");
 const pay = new linePay({
     channelId: process.env.LINE_PAY_CHANNEL_ID,
     channelSecret: process.env.LINE_PAY_CHANNEL_SECRET,
-    hostname: process.env.LINE_PAY_HOSTNAME,
-    isSandbox: false
+    hostname: process.env.LINE_PAY_HOSTNAME
 });
 
 // Importing LINE Messaging API SDK
@@ -73,13 +72,12 @@ server.post("/webhook", lineBot.middleware(botConfig), (req, res, next) => {
                         confirmUrlType: "SERVER",
                         orderId: `${event.source.userId}-${Date.now()}`
                     }
-                    cache.put(reservation.orderId, reservation);
 
                     // Call LINE Pay reserve API.
                     pay.reserve(reservation).then((response) => {
                         reservation.transactionId = response.info.transactionId;
                         reservation.userId = event.source.userId;
-                        cache.put(reservation.orderId, reservation);
+                        cache.put(reservation.transactionId, reservation);
 
                         let message = {
                             type: "template",
@@ -125,12 +123,12 @@ server.post("/webhook", lineBot.middleware(botConfig), (req, res, next) => {
 
 // If user approve the payment, LINE Pay server call this webhook.
 server.get("/pay/confirm", (req, res, next) => {
-    if (!req.query.orderId){
-        return res.status(400).send("Order Id not found.");
+    if (!req.query.transactionId){
+        return res.status(400).send("Transaction Id not found.");
     }
 
     // Retrieve the reservation from database.
-    let reservation = cache.get(req.query.orderId);
+    let reservation = cache.get(req.query.transactionId);
     if (!reservation){
         return res.status(400).send("Reservation not found.")
     }

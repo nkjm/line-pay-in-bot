@@ -19,7 +19,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
-    "line-pay": "1.0.10",
+    "line-pay": "1.0.11",
     "memory-cache": "^0.2.0",
     "uuid": "^3.1.0"
   }
