@@ -49,7 +49,7 @@ Please be noted that you need to register your global ip address as white list o
 If you like to try the server with middleware of the SDK, run follwoing command. This is much simpler but not so flexible.
 
 ```
-$ node with_middleare.js
+$ node with_middleware.js
 ```
 
 If you like to try the server without using middleware of the SDK, run following command. You can control the behavior more in detail in this configuration.
